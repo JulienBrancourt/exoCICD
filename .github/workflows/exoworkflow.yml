@@ -15,8 +15,8 @@ jobs:
                 distribution: 'temurin'
                 cache: maven
             - name: Build with Maven
-              run: mvn -B package --file pom.xml
-            - name: afficher un message pour indiquer le buid de l'appli
+              run: mvn install
+            - name: afficher un message pour indiquer le build de l'appli
               run: echo "appli buildée"
             
             

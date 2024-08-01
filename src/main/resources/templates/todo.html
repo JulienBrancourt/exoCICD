@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Detail d'une TODO !!!</h1>
+
+<hr>
+<h2>En decomposant la todo</h2>
+<p>Titre : <span th:text="${titre}"></span></p>
+<p>Description : <span th:text="${description}"></span></p>
+<p>Status : <span th:text="${status}"></span></p>
+<hr>
+<h2>Avec la todo complete</h2>
+<p>Titre : <span th:text="${todo.getName()}"></span></p>
+<p>Description : <span th:text="${todo.getDescription()}"></span></p>
+<p th:if="${todo.isDone()}">Status : fini</p>
+<p th:if="${!todo.isDone()}">Status : en cours </p>
+
+</body>
+</html>

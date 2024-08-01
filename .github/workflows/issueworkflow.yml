@@ -1,0 +1,18 @@
+name: Issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  notify_issue:
+    name: Envoi d'un message pour une issue ouverte
+    runs-on: ubuntu-latest
+    steps:
+      - name: Envoyer message
+        env:
+          ISSUE_AUTHOR: ${{ github.actor }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: |
+          echo "Bonjour $ISSUE_AUTHOR"
+          echo "Nous avons bien pris en compte votre problème du nom de : $ISSUE_TITLE"

@@ -1,0 +1,12 @@
+name: Notification de Fork
+
+on:
+  fork:
+
+jobs:
+  notify_fork:
+    name: Affichage du message de fork
+    runs-on: ubuntu-latest
+    steps:
+      - name: Afficher message
+        run: echo "Le projet a été forké"

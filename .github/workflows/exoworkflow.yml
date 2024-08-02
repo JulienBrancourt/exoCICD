@@ -14,10 +14,23 @@ jobs:
                 java-version: '17'
                 distribution: 'temurin'
                 cache: maven
-            - name: Build with Maven
+            - name: Mise en cache des dépendances Maven
+              uses: actions/cache@v4
+              with:
+                path: ~/.m2/repository
+                key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+                restore-keys: |
+                  ${{ runner.os }}-maven-
+            - name: Installation des dépendances Maven
               run: mvn install
+            - name: Build
+              run: mvn package
             - name: afficher un message pour indiquer le build de l'appli
               run: echo "appli buildée"
-            
+            - name: Upload l'artefact avec le build de l'appli
+              uses: actions/upload-artifact@v4
+              with:
+                name: artefact_upload
+                path: target/*.jar
             
             
